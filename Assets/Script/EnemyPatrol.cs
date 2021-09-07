@@ -17,10 +17,13 @@ public class EnemyPatrol : MonoBehaviour
     //speed of the enemy
     public float enemySpeed;
 
+    public float deathRayRange;
+
     // Start is called before the first frame update
     private void Start()
     {
         enemyPos = this.GetComponent<Transform>();
+        Physics2D.queriesStartInColliders = false;
     }
 
     // Update is called once per frame
@@ -45,5 +48,29 @@ public class EnemyPatrol : MonoBehaviour
         {
             enemyPos.position = Vector3.MoveTowards(enemyPos.position, pos1.position, enemySpeed * Time.deltaTime);
         }
+
+        DeathRay();
+    }
+
+    private void DeathRay()
+    {
+        RaycastHit2D deathRay = Physics2D.Raycast(enemyPos.position, Vector3.down, deathRayRange);
+        if(deathRay.collider != null)
+        {
+            Debug.DrawLine(transform.position, deathRay.point);
+            if(deathRay.collider.CompareTag("Player"))
+            {
+                Debug.Log("mort");
+            }
+            else
+            {
+                Debug.Log("Rien");
+            }
+        }
+        else
+        {
+            Debug.DrawLine(transform.position, transform.position + Vector3.down * deathRayRange);
+        }
+
     }
 }
