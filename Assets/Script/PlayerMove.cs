@@ -8,39 +8,68 @@ public class PlayerMove : MonoBehaviour
     [Header("Components")]
     private Rigidbody2D rb;
     private BoxCollider2D bc;
+    public Player playerControl;
+
 
     [Header("Movements")]
-    bool canMove;
+    public bool canMove;
     public float speed;
     public bool isLeft;
+
 
     [Header("Jump")]
     public float jumpForce;
     public float extraHeightBelow;
     public LayerMask ground;
 
+
     [Header("WallJump")]
     public LayerMask wall;
     public bool fromWallJump;
     public float extraHeightFace;
-
     float actualTimeRecov;
     public float timeRecov;
+    public float speedMulti;
 
 
-    void Start()
+    [Header("Attack")]
+    public float attackRecov;
+    float actualAttackRecov;
+
+    public GameObject attack;
+    public Transform attackPoint;
+
+
+
+    void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
         canMove = true;
+        playerControl = new Player();
     }
 
-    private void Update()
+    private void OnEnable()
+    {
+        playerControl.Enable();
+    }
+
+    private void OnDisable()
+    {
+        playerControl.Disable();
+    }
+
+
+
+
+    void Update()
     {
         Move();
         Jump();
         IsGrounded();
         WallJumpRecov();
+        Attack();
+
     }
 
     // Movement ------------------------------------------------------------------------------------------------------------------------------------
@@ -53,14 +82,14 @@ public class PlayerMove : MonoBehaviour
             {
                 if (Input.GetKey("q"))
                 {
-                    rb.velocity = new Vector2(-speed * 2, rb.velocity.y);
+                    rb.velocity = new Vector2(-speed * speedMulti, rb.velocity.y);
                     isLeft = true;
                     transform.eulerAngles = new Vector3(0, 180, 0);
 
                 }
                 else if (Input.GetKey("d"))
                 {
-                    rb.velocity = new Vector2(speed * 2, rb.velocity.y);
+                    rb.velocity = new Vector2(speed * speedMulti, rb.velocity.y);
                     isLeft = false;
                     transform.eulerAngles = new Vector3(0, 0, 0);
                 }
@@ -101,25 +130,26 @@ public class PlayerMove : MonoBehaviour
             {
                 rb.velocity = new Vector2(rb.velocity.x, jumpForce);
             }
+
             else if (IsWalled() == true)
             {
-                canMove = false;
-                actualTimeRecov = timeRecov;
-                fromWallJump = true;
 
                 if (isLeft)
                 {
-                    rb.velocity = new Vector2(speed * 2, jumpForce);
+                    rb.velocity = new Vector2(speed * speedMulti, jumpForce);
                     transform.eulerAngles = new Vector3(0, 0, 0);
                     isLeft = false;
                 }
                 else
                 {
-                    rb.velocity = new Vector2(-speed * 2, jumpForce);
+                    rb.velocity = new Vector2(-speed * speedMulti, jumpForce);
                     transform.eulerAngles = new Vector3(0, 180, 0);
                     isLeft = true;
                 }
                 
+                canMove = false;
+                actualTimeRecov = timeRecov;
+                fromWallJump = true;
             }
         }
     }
@@ -137,8 +167,20 @@ public class PlayerMove : MonoBehaviour
     }
 
 
+    public void Attack()
+    {
+        if (Input.GetKeyDown("return"))
+        {
+            if (actualAttackRecov <= 0)
+            {
+                var att = Instantiate(attack, attackPoint.position, attackPoint.rotation);
+                att.transform.parent = gameObject.transform;
+                actualAttackRecov = attackRecov;
+            }
 
-
+        }
+                actualAttackRecov -= Time.deltaTime;
+    }
 
 
 
@@ -150,8 +192,9 @@ public class PlayerMove : MonoBehaviour
 
         if (raycastHit.collider != null)
         {
-            
             fromWallJump = false;
+            canMove = true;
+            
             return raycastHit.collider != null;
         }
 

@@ -1,5 +1,35 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &6466206604991411834
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6014229382054732620}
+  m_Layer: 6
+  m_Name: AttackPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6014229382054732620
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6466206604991411834}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 2.1126, y: -0.8036, z: 0}
+  m_LocalScale: {x: 1.54114, y: 2.2909303, z: 1}
+  m_Children: []
+  m_Father: {fileID: 6589569306741939770}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &6589569306741939768
 GameObject:
   m_ObjectHideFlags: 0
@@ -31,7 +61,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 6014229382054732620}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -106,7 +137,7 @@ Rigidbody2D:
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
-  m_CollisionDetection: 0
+  m_CollisionDetection: 1
   m_Constraints: 4
 --- !u!61 &165681710
 BoxCollider2D:
@@ -117,7 +148,7 @@ BoxCollider2D:
   m_GameObject: {fileID: 6589569306741939768}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 4c4b005a02c4455439c8b9212d7ca821, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -248,9 +279,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6ba13ce73328760428051934e20e8de9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canMove: 0
   speed: 5
   isLeft: 0
-  jumpForce: 25
+  jumpForce: 27.5
   extraHeightBelow: 0.1
   ground:
     serializedVersion: 2
@@ -260,4 +292,7 @@ MonoBehaviour:
     m_Bits: 64
   fromWallJump: 0
   extraHeightFace: 0.1
-  timeRecov: 0
+  timeRecov: 1
+  attackRecov: 0.5
+  attack: {fileID: 1508613276527865405, guid: 2f6c8fd4c6c2ba849ad9ad42df08e215, type: 3}
+  attackPoint: {fileID: 6014229382054732620}

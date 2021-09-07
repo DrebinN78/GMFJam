@@ -669,10 +669,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 165681710, guid: 86da68bd4b4961249b2b5a04114f2150, type: 3}
-      propertyPath: m_Material
-      value: 
-      objectReference: {fileID: 6200000, guid: 4c4b005a02c4455439c8b9212d7ca821, type: 2}
     - target: {fileID: 6589569306741939768, guid: 86da68bd4b4961249b2b5a04114f2150, type: 3}
       propertyPath: m_Name
       value: Handy
@@ -722,8 +718,12 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6589569306741939772, guid: 86da68bd4b4961249b2b5a04114f2150, type: 3}
-      propertyPath: timeRecov
-      value: 1
+      propertyPath: speed
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 6589569306741939772, guid: 86da68bd4b4961249b2b5a04114f2150, type: 3}
+      propertyPath: speedMulti
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86da68bd4b4961249b2b5a04114f2150, type: 3}
