@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TrackingEnemy : MonoBehaviour
+public class EnemyTacking : MonoBehaviour
 {
     private Transform enemyTransform;
     private Transform player;
