@@ -1,7 +1,13 @@
 fileFormatVersion: 2
 guid: 02c038324369a5f48ab638d0967d9621
 TextureImporter:
-  internalIDToNameTable: []
+  internalIDToNameTable:
+  - first:
+      213: -4638316702863074865
+    second: Handy_0
+  - first:
+      213: -5464686085096745960
+    second: Handy_1
   externalObjects: {}
   serializedVersion: 11
   mipmaps:
@@ -125,11 +131,53 @@ TextureImporter:
     forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
-    sprites: []
+    sprites:
+    - serializedVersion: 2
+      name: Handy_0
+      rect:
+        serializedVersion: 2
+        x: 10
+        y: 0
+        width: 219
+        height: 426
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc9d51a988361afb0800000000000000
+      internalID: -4638316702863074865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Handy_1
+      rect:
+        serializedVersion: 2
+        x: 229
+        y: 13
+        width: 370
+        height: 196
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 814d9c075f88924b0800000000000000
+      internalID: -5464686085096745960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
-    spriteID: 
+    spriteID: cb2c5122124ade944a7bf4375b54f0b0
     internalID: 0
     vertices: []
     indices: 
