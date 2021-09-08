@@ -72,7 +72,7 @@ public class PlayerMove : MonoBehaviour
         IsGrounded();
         WallJumpRecov();
         if (playerAction.GameMap.Move.ReadValue<float>() == 0f)
-            rb.velocity = Vector2.zero;
+            rb.velocity = new Vector2(0, rb.velocity.y);
     }
 
     // Movement ------------------------------------------------------------------------------------------------------------------------------------
