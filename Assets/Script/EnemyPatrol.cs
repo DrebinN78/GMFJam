@@ -43,10 +43,12 @@ public class EnemyPatrol : MonoBehaviour
         if(actualPos == pos1)
         {
             enemyPos.position = Vector3.MoveTowards(enemyPos.position, pos2.position, enemySpeed * Time.deltaTime);
+            enemyPos.localScale = new Vector3(1, 1, 1);
         }
         else if(actualPos == pos2)
         {
             enemyPos.position = Vector3.MoveTowards(enemyPos.position, pos1.position, enemySpeed * Time.deltaTime);
+            enemyPos.localScale = new Vector3(-1, 1, 1);
         }
 
         DeathRay();
@@ -54,7 +56,7 @@ public class EnemyPatrol : MonoBehaviour
 
     private void DeathRay()
     {
-        RaycastHit2D deathRay = Physics2D.Raycast(enemyPos.position, Vector3.down, deathRayRange);
+        RaycastHit2D deathRay = Physics2D.Raycast(enemyPos.position, -transform.up, deathRayRange);
         if(deathRay.collider != null)
         {
             Debug.DrawLine(transform.position, deathRay.point);
@@ -65,7 +67,7 @@ public class EnemyPatrol : MonoBehaviour
         }
         else
         {
-            Debug.DrawLine(transform.position, transform.position + Vector3.down * deathRayRange);
+            Debug.DrawLine(transform.position, transform.position + -transform.up * deathRayRange);
         }
 
     }
