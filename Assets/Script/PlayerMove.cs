@@ -8,7 +8,7 @@ public class PlayerMove : MonoBehaviour
     [Header("Components")]
     private Rigidbody2D rb;
     private BoxCollider2D bc;
-    public Player playerControl;
+    //public Player playerControl;
 
 
     [Header("Movements")]
@@ -46,10 +46,10 @@ public class PlayerMove : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
         canMove = true;
-        playerControl = new Player();
+        //playerControl = new Player();
     }
 
-    private void OnEnable()
+    /*private void OnEnable()
     {
         playerControl.Enable();
     }
@@ -57,7 +57,7 @@ public class PlayerMove : MonoBehaviour
     private void OnDisable()
     {
         playerControl.Disable();
-    }
+    }*/
 
 
 
