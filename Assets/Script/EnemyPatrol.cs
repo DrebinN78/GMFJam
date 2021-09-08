@@ -62,10 +62,6 @@ public class EnemyPatrol : MonoBehaviour
             {
                 Debug.Log("mort");
             }
-            else
-            {
-                Debug.Log("Rien");
-            }
         }
         else
         {
