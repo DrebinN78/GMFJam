@@ -1,4 +1,4 @@
-// GENERATED AUTOMATICALLY FROM 'Assets/player.inputactions'
+// GENERATED AUTOMATICALLY FROM 'Assets/PlayerActionsAsset.inputactions'
 
 using System;
 using System.Collections;
@@ -6,23 +6,23 @@ using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
 
-public class @PlayerTruc : IInputActionCollection, IDisposable
+public class @PlayerActionClass : IInputActionCollection, IDisposable
 {
     public InputActionAsset asset { get; }
-    public @PlayerTruc()
+    public @PlayerActionClass()
     {
         asset = InputActionAsset.FromJson(@"{
-    ""name"": ""player"",
+    ""name"": ""PlayerActionsAsset"",
     ""maps"": [
         {
-            ""name"": ""Player"",
+            ""name"": ""GameMap"",
             ""id"": ""54a18602-454c-48bb-a644-bdfca76d280b"",
             ""actions"": [
                 {
                     ""name"": ""Move"",
                     ""type"": ""Value"",
                     ""id"": ""0dcde477-b058-4307-aa1c-a7efaa877a26"",
-                    ""expectedControlType"": ""Button"",
+                    ""expectedControlType"": ""Axis"",
                     ""processors"": """",
                     ""interactions"": """"
                 },
@@ -33,24 +33,21 @@ public class @PlayerTruc : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Attack"",
+                    ""type"": ""Button"",
+                    ""id"": ""973adfb4-0a2e-4be3-aaa4-3b74ddcc904c"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
                 {
-                    ""name"": """",
-                    ""id"": ""978bfe49-cc26-4a3d-ab7b-7d7a29327403"",
-                    ""path"": ""<Gamepad>/leftStick"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Gamepad"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""WASD"",
-                    ""id"": ""00ca640b-d935-4593-8157-c05846ea39b3"",
-                    ""path"": ""Dpad"",
+                    ""name"": ""1D Axis Keyboard"",
+                    ""id"": ""3615d6e9-e7bb-48a7-8f90-0aec1d700ba8"",
+                    ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -59,96 +56,30 @@ public class @PlayerTruc : IInputActionCollection, IDisposable
                     ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""up"",
-                    ""id"": ""e2062cb9-1b15-46a2-838c-2f8d72a0bdd9"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""up"",
-                    ""id"": ""8180e8bd-4097-4f4e-ab88-4523101a6ce9"",
-                    ""path"": ""<Keyboard>/upArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""320bffee-a40b-4347-ac70-c210eb8bc73a"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""down"",
-                    ""id"": ""1c5327b5-f71c-4f60-99c7-4e737386f1d1"",
-                    ""path"": ""<Keyboard>/downArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""left"",
-                    ""id"": ""d2581a9b-1d11-4566-b27d-b92aff5fabbc"",
+                    ""name"": ""negative"",
+                    ""id"": ""b67c6efd-71c2-45cc-8adc-f1af3d85dec4"",
                     ""path"": ""<Keyboard>/a"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""left"",
-                    ""id"": ""2e46982e-44cc-431b-9f0b-c11910bf467a"",
-                    ""path"": ""<Keyboard>/leftArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""right"",
-                    ""id"": ""fcfe95b8-67b9-4526-84b5-5d0bc98d6400"",
+                    ""name"": ""positive"",
+                    ""id"": ""caacde5b-a143-44b3-a3ba-7392451e75dd"",
                     ""path"": ""<Keyboard>/d"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
+                    ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
-                    ""name"": ""right"",
-                    ""id"": ""77bff152-3580-4b21-b6de-dcd0c7e41164"",
-                    ""path"": ""<Keyboard>/rightArrow"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": "";Keyboard&Mouse"",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Gamepad"",
-                    ""id"": ""d18817d2-258c-4a93-8edd-eefb9f2c3699"",
+                    ""name"": ""1D Axis Controller"",
+                    ""id"": ""a6c6059e-dd9a-4b63-be9a-cbdcb02ae913"",
                     ""path"": ""1DAxis"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -159,55 +90,22 @@ public class @PlayerTruc : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": ""negative"",
-                    ""id"": ""7a737035-9990-4053-b7ce-fedda3f1dcb1"",
+                    ""id"": ""7a68d7ef-0290-42c9-895b-27c3fb176390"",
                     ""path"": ""<Gamepad>/leftStick/left"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
                 },
                 {
                     ""name"": ""positive"",
-                    ""id"": ""36303f9c-e10f-4d93-b28c-d1af97680e24"",
+                    ""id"": ""d49c1762-9c30-413c-baa1-f68cae027a45"",
                     ""path"": ""<Gamepad>/leftStick/right"",
                     ""interactions"": """",
                     ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""Gamepad(Dpad)"",
-                    ""id"": ""203a6141-310f-4b89-8ded-8a23bfc8df59"",
-                    ""path"": ""1DAxis"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": true,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": ""negative"",
-                    ""id"": ""16211f41-7307-42a7-90e5-c58deb03110c"",
-                    ""path"": ""<Gamepad>/dpad/left"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": true
-                },
-                {
-                    ""name"": ""positive"",
-                    ""id"": ""93f8a87b-1630-41b0-a1b4-da2fa8b311e3"",
-                    ""path"": ""<Gamepad>/dpad/right"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
+                    ""groups"": ""Gamepad"",
                     ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
@@ -231,6 +129,28 @@ public class @PlayerTruc : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Keyboard&Mouse"",
                     ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""3ccac3a1-08e6-417a-af37-1a6f2132023f"",
+                    ""path"": ""<Keyboard>/enter"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ffd84a4d-f6ed-49b2-b7b6-452dda3efc1c"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Attack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -806,10 +726,11 @@ public class @PlayerTruc : IInputActionCollection, IDisposable
         }
     ]
 }");
-        // Player
-        m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
-        m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
-        m_Player_Jump = m_Player.FindAction("Jump", throwIfNotFound: true);
+        // GameMap
+        m_GameMap = asset.FindActionMap("GameMap", throwIfNotFound: true);
+        m_GameMap_Move = m_GameMap.FindAction("Move", throwIfNotFound: true);
+        m_GameMap_Jump = m_GameMap.FindAction("Jump", throwIfNotFound: true);
+        m_GameMap_Attack = m_GameMap.FindAction("Attack", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -868,34 +789,39 @@ public class @PlayerTruc : IInputActionCollection, IDisposable
         asset.Disable();
     }
 
-    // Player
-    private readonly InputActionMap m_Player;
-    private IPlayerActions m_PlayerActionsCallbackInterface;
-    private readonly InputAction m_Player_Move;
-    private readonly InputAction m_Player_Jump;
-    public struct PlayerActions
+    // GameMap
+    private readonly InputActionMap m_GameMap;
+    private IGameMapActions m_GameMapActionsCallbackInterface;
+    private readonly InputAction m_GameMap_Move;
+    private readonly InputAction m_GameMap_Jump;
+    private readonly InputAction m_GameMap_Attack;
+    public struct GameMapActions
     {
-        private @PlayerTruc m_Wrapper;
-        public PlayerActions(@PlayerTruc wrapper) { m_Wrapper = wrapper; }
-        public InputAction @Move => m_Wrapper.m_Player_Move;
-        public InputAction @Jump => m_Wrapper.m_Player_Jump;
-        public InputActionMap Get() { return m_Wrapper.m_Player; }
+        private @PlayerActionClass m_Wrapper;
+        public GameMapActions(@PlayerActionClass wrapper) { m_Wrapper = wrapper; }
+        public InputAction @Move => m_Wrapper.m_GameMap_Move;
+        public InputAction @Jump => m_Wrapper.m_GameMap_Jump;
+        public InputAction @Attack => m_Wrapper.m_GameMap_Attack;
+        public InputActionMap Get() { return m_Wrapper.m_GameMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
         public bool enabled => Get().enabled;
-        public static implicit operator InputActionMap(PlayerActions set) { return set.Get(); }
-        public void SetCallbacks(IPlayerActions instance)
+        public static implicit operator InputActionMap(GameMapActions set) { return set.Get(); }
+        public void SetCallbacks(IGameMapActions instance)
         {
-            if (m_Wrapper.m_PlayerActionsCallbackInterface != null)
+            if (m_Wrapper.m_GameMapActionsCallbackInterface != null)
             {
-                @Move.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Move.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Move.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnMove;
-                @Jump.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
-                @Jump.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnJump;
+                @Move.started -= m_Wrapper.m_GameMapActionsCallbackInterface.OnMove;
+                @Move.performed -= m_Wrapper.m_GameMapActionsCallbackInterface.OnMove;
+                @Move.canceled -= m_Wrapper.m_GameMapActionsCallbackInterface.OnMove;
+                @Jump.started -= m_Wrapper.m_GameMapActionsCallbackInterface.OnJump;
+                @Jump.performed -= m_Wrapper.m_GameMapActionsCallbackInterface.OnJump;
+                @Jump.canceled -= m_Wrapper.m_GameMapActionsCallbackInterface.OnJump;
+                @Attack.started -= m_Wrapper.m_GameMapActionsCallbackInterface.OnAttack;
+                @Attack.performed -= m_Wrapper.m_GameMapActionsCallbackInterface.OnAttack;
+                @Attack.canceled -= m_Wrapper.m_GameMapActionsCallbackInterface.OnAttack;
             }
-            m_Wrapper.m_PlayerActionsCallbackInterface = instance;
+            m_Wrapper.m_GameMapActionsCallbackInterface = instance;
             if (instance != null)
             {
                 @Move.started += instance.OnMove;
@@ -904,10 +830,13 @@ public class @PlayerTruc : IInputActionCollection, IDisposable
                 @Jump.started += instance.OnJump;
                 @Jump.performed += instance.OnJump;
                 @Jump.canceled += instance.OnJump;
+                @Attack.started += instance.OnAttack;
+                @Attack.performed += instance.OnAttack;
+                @Attack.canceled += instance.OnAttack;
             }
         }
     }
-    public PlayerActions @Player => new PlayerActions(this);
+    public GameMapActions @GameMap => new GameMapActions(this);
 
     // UI
     private readonly InputActionMap m_UI;
@@ -924,8 +853,8 @@ public class @PlayerTruc : IInputActionCollection, IDisposable
     private readonly InputAction m_UI_TrackedDeviceOrientation;
     public struct UIActions
     {
-        private @PlayerTruc m_Wrapper;
-        public UIActions(@PlayerTruc wrapper) { m_Wrapper = wrapper; }
+        private @PlayerActionClass m_Wrapper;
+        public UIActions(@PlayerActionClass wrapper) { m_Wrapper = wrapper; }
         public InputAction @Navigate => m_Wrapper.m_UI_Navigate;
         public InputAction @Submit => m_Wrapper.m_UI_Submit;
         public InputAction @Cancel => m_Wrapper.m_UI_Cancel;
@@ -1058,10 +987,11 @@ public class @PlayerTruc : IInputActionCollection, IDisposable
             return asset.controlSchemes[m_XRSchemeIndex];
         }
     }
-    public interface IPlayerActions
+    public interface IGameMapActions
     {
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
+        void OnAttack(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {

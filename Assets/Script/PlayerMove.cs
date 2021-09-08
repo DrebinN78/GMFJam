@@ -6,9 +6,11 @@ using UnityEngine.InputSystem;
 public class PlayerMove : MonoBehaviour
 {
     [Header("Components")]
-    private Rigidbody2D rb;
-    private BoxCollider2D bc;
-    //public Player playerControl;
+    Rigidbody2D rb;
+    BoxCollider2D bc;
+    InputAction input;
+    PlayerActionClass playerAction;
+
 
 
     [Header("Movements")]
@@ -39,75 +41,72 @@ public class PlayerMove : MonoBehaviour
     public GameObject attack;
     public Transform attackPoint;
 
-
-
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<BoxCollider2D>();
         canMove = true;
-        //playerControl = new Player();
+        playerAction = new PlayerActionClass();
+        playerAction.GameMap.Move.performed += Move;
+        playerAction.GameMap.Jump.performed += Jump;
+        playerAction.GameMap.Attack.performed += Attack;
     }
 
-    /*private void OnEnable()
+    void OnEnable()
     {
-        playerControl.Enable();
+        playerAction.GameMap.Move.Enable();
+        playerAction.GameMap.Jump.Enable();
+        playerAction.GameMap.Attack.Enable();
+
     }
 
-    private void OnDisable()
+    void OnDisable()
     {
-        playerControl.Disable();
-    }*/
-
-
-
+        playerAction.GameMap.Move.Disable();
+        playerAction.GameMap.Jump.Disable();
+        playerAction.GameMap.Attack.Disable();
+    }
 
     void Update()
     {
-        Move();
-        Jump();
         IsGrounded();
         WallJumpRecov();
-        Attack();
-
     }
 
     // Movement ------------------------------------------------------------------------------------------------------------------------------------
 
-    public void Move()
+    public void Move(InputAction.CallbackContext context)
     {
         if (canMove)
-        {
             if (fromWallJump)
             {
-                if (Input.GetKey("q"))
+                rb.velocity = new Vector2((speed * context.ReadValue<float>()) * speedMulti, rb.velocity.y);
+                if (context.ReadValue<float>() > 0f)
                 {
-                    rb.velocity = new Vector2(-speed * speedMulti, rb.velocity.y);
-                    isLeft = true;
+                    isLeft = false;
                     transform.eulerAngles = new Vector3(0, 180, 0);
 
                 }
-                else if (Input.GetKey("d"))
+                else if (context.ReadValue<float>() < 0f)
                 {
-                    rb.velocity = new Vector2(speed * speedMulti, rb.velocity.y);
-                    isLeft = false;
+                    isLeft = true;
                     transform.eulerAngles = new Vector3(0, 0, 0);
                 }
-                
+
             }
             else
             {
-                if (Input.GetKey("q"))
+                rb.velocity = new Vector2(speed * context.ReadValue<float>(), rb.velocity.y);
+                if (context.ReadValue<float>() > 0f)
                 {
-                    rb.velocity = new Vector2(-speed, rb.velocity.y);
-                    isLeft = true;
+                    isLeft = false;
                     transform.eulerAngles = new Vector3(0, 180, 0);
 
                 }
-                else if (Input.GetKey("d"))
+                else if (context.ReadValue<float>() < 0f)
                 {
-                    rb.velocity = new Vector2(speed, rb.velocity.y);
-                    isLeft = false;
+                    isLeft = true;
+
                     transform.eulerAngles = new Vector3(0, 0, 0);
                 }
                 else
@@ -115,48 +114,38 @@ public class PlayerMove : MonoBehaviour
                     rb.velocity = new Vector2(0, rb.velocity.y);
                 }
             }
-            
-            
-        }
     }
 
 
 
-    public void Jump()
+    public void Jump(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown("space"))
+        print("bruh");
+        if (IsGrounded())
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+        else if (IsWalled())
         {
-            if (IsGrounded() == true)
+            if (isLeft)
             {
-                rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+                rb.velocity = new Vector2(speed * speedMulti, jumpForce);
+                transform.eulerAngles = new Vector3(0, 0, 0);
+                isLeft = false;
             }
-
-            else if (IsWalled() == true)
+            else
             {
-
-                if (isLeft)
-                {
-                    rb.velocity = new Vector2(speed * speedMulti, jumpForce);
-                    transform.eulerAngles = new Vector3(0, 0, 0);
-                    isLeft = false;
-                }
-                else
-                {
-                    rb.velocity = new Vector2(-speed * speedMulti, jumpForce);
-                    transform.eulerAngles = new Vector3(0, 180, 0);
-                    isLeft = true;
-                }
-                
-                canMove = false;
-                actualTimeRecov = timeRecov;
-                fromWallJump = true;
+                rb.velocity = new Vector2(-speed * speedMulti, jumpForce);
+                transform.eulerAngles = new Vector3(0, 180, 0);
+                isLeft = true;
             }
+            canMove = false;
+            actualTimeRecov = timeRecov;
+            fromWallJump = true;
         }
     }
 
     public void WallJumpRecov()
     {
-        if(actualTimeRecov <= 0)
+        if (actualTimeRecov <= 0)
         {
             canMove = true;
         }
@@ -167,19 +156,15 @@ public class PlayerMove : MonoBehaviour
     }
 
 
-    public void Attack()
+    public void Attack(InputAction.CallbackContext context)
     {
-        if (Input.GetKeyDown("return"))
+        if (actualAttackRecov <= 0)
         {
-            if (actualAttackRecov <= 0)
-            {
-                var att = Instantiate(attack, attackPoint.position, attackPoint.rotation);
-                att.transform.parent = gameObject.transform;
-                actualAttackRecov = attackRecov;
-            }
-
+            var att = Instantiate(attack, attackPoint.position, attackPoint.rotation);
+            att.transform.parent = gameObject.transform;
+            actualAttackRecov = attackRecov;
         }
-                actualAttackRecov -= Time.deltaTime;
+        actualAttackRecov -= Time.deltaTime;
     }
 
 
@@ -194,7 +179,7 @@ public class PlayerMove : MonoBehaviour
         {
             fromWallJump = false;
             canMove = true;
-            
+
             return raycastHit.collider != null;
         }
 
