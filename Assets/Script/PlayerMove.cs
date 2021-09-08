@@ -41,6 +41,10 @@ public class PlayerMove : MonoBehaviour
     public GameObject attack;
     public Transform attackPoint;
 
+
+    [Header("Finger")]
+    public int finger;
+
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
@@ -122,9 +126,9 @@ public class PlayerMove : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        if (IsGrounded())
+        if (IsGrounded() && finger >= 2)
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
-        else if (IsWalled())
+        else if (IsWalled() && finger >= 4)
         {
             if (isLeft)
             {
@@ -159,7 +163,7 @@ public class PlayerMove : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if (actualAttackRecov <= 0)
+        if (actualAttackRecov <= 0 && finger >=3)
         {
             var att = Instantiate(attack, attackPoint.position, attackPoint.rotation);
             att.transform.parent = gameObject.transform;
