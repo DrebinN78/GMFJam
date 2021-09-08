@@ -47,6 +47,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   trackSpeed: 3
+  maxLife: 2
+  life: 0
 --- !u!114 &7796775848274244375
 MonoBehaviour:
   m_ObjectHideFlags: 0
