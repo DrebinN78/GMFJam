@@ -71,6 +71,8 @@ public class PlayerMove : MonoBehaviour
     {
         IsGrounded();
         WallJumpRecov();
+        if (playerAction.GameMap.Move.ReadValue<float>() == 0f)
+            rb.velocity = Vector2.zero;
     }
 
     // Movement ------------------------------------------------------------------------------------------------------------------------------------
@@ -80,7 +82,7 @@ public class PlayerMove : MonoBehaviour
         if (canMove)
             if (fromWallJump)
             {
-                rb.velocity = new Vector2((speed * context.ReadValue<float>()) * speedMulti, rb.velocity.y);
+                rb.AddForce(new Vector2((speed * context.ReadValue<float>()) * speedMulti, 0f));
                 if (context.ReadValue<float>() > 0f)
                 {
                     isLeft = false;
@@ -96,7 +98,7 @@ public class PlayerMove : MonoBehaviour
             }
             else
             {
-                rb.velocity = new Vector2(speed * context.ReadValue<float>(), rb.velocity.y);
+                rb.AddForce(new Vector2((speed * context.ReadValue<float>()) * speedMulti, 0f));
                 if (context.ReadValue<float>() > 0f)
                 {
                     isLeft = false;
@@ -120,7 +122,6 @@ public class PlayerMove : MonoBehaviour
 
     public void Jump(InputAction.CallbackContext context)
     {
-        print("bruh");
         if (IsGrounded())
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
         else if (IsWalled())
