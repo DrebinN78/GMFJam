@@ -7,7 +7,7 @@ public class PlayerMove : MonoBehaviour
 {
     [Header("Components")]
     Rigidbody2D rb;
-    BoxCollider2D bc;
+    CapsuleCollider2D bc;
     InputAction input;
     PlayerActionClass playerAction;
 
@@ -44,7 +44,7 @@ public class PlayerMove : MonoBehaviour
     void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
-        bc = GetComponent<BoxCollider2D>();
+        bc = GetComponent<CapsuleCollider2D>();
         canMove = true;
         playerAction = new PlayerActionClass();
         playerAction.GameMap.Move.performed += Move;
