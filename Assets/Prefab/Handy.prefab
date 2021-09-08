@@ -133,8 +133,8 @@ Rigidbody2D:
   m_UseAutoMass: 0
   m_Mass: 1
   m_LinearDrag: 0
-  m_AngularDrag: 0.05
-  m_GravityScale: 8
+  m_AngularDrag: 0
+  m_GravityScale: 3
   m_Material: {fileID: 0}
   m_Interpolate: 0
   m_SleepingMode: 1
@@ -271,9 +271,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canMove: 0
-  speed: 30
+  speed: 300
   isLeft: 0
-  jumpForce: 30
+  jumpForce: 18
   extraHeightBelow: 0.1
   ground:
     serializedVersion: 2
