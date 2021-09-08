@@ -44,6 +44,7 @@ GameObject:
   - component: {fileID: 165681710}
   - component: {fileID: 6589569306741939771}
   - component: {fileID: 6589569306741939772}
+  - component: {fileID: 533264133909373524}
   m_Layer: 0
   m_Name: Handy
   m_TagString: Untagged
@@ -293,6 +294,26 @@ MonoBehaviour:
   fromWallJump: 0
   extraHeightFace: 0.1
   timeRecov: 1
+  speedMulti: 0
   attackRecov: 0.5
   attack: {fileID: 1508613276527865405, guid: 2f6c8fd4c6c2ba849ad9ad42df08e215, type: 3}
   attackPoint: {fileID: 6014229382054732620}
+--- !u!95 &533264133909373524
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6589569306741939768}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 46efb0596e288d44585b795b728b7c2b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
