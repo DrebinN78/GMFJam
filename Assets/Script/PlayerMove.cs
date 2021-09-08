@@ -84,13 +84,13 @@ public class PlayerMove : MonoBehaviour
                 if (context.ReadValue<float>() > 0f)
                 {
                     isLeft = false;
-                    transform.eulerAngles = new Vector3(0, 180, 0);
+                    transform.eulerAngles = new Vector3(0, 0, 0);
 
                 }
                 else if (context.ReadValue<float>() < 0f)
                 {
                     isLeft = true;
-                    transform.eulerAngles = new Vector3(0, 0, 0);
+                    transform.eulerAngles = new Vector3(0, 180, 0);
                 }
 
             }
