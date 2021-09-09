@@ -133,7 +133,10 @@ public class PlayerMove : MonoBehaviour
     public void Jump(InputAction.CallbackContext context)
     {
         if (IsGrounded() && finger >= 2)
+        {
             rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            anim.Play("Jump");
+        }
         else if (IsWalled() && finger >= 4)
         {
             if (isLeft)
@@ -196,10 +199,16 @@ public class PlayerMove : MonoBehaviour
     {
         Vector3 actualCenter = bc.bounds.center + new Vector3(0, 0.1f, 0);
         RaycastHit2D raycastHit = Physics2D.BoxCast(actualCenter, bc.bounds.size, 0f, Vector2.down, extraHeightBelow, ground);
+
         if (raycastHit.collider != null)
         {
             fromWallJump = false;
             canMove = true;
+
+            if (anim.GetCurrentAnimatorStateInfo(0).IsName("Jump2"))
+            {
+                anim.Play("Jump3");
+            }
 
             return raycastHit.collider != null;
         }
@@ -265,12 +274,12 @@ public class PlayerMove : MonoBehaviour
             if (finger >= 2)
             {
                 anim.Play("Run");
-                Debug.Log("cours" + finger);
+                //Debug.Log("cours" + finger);
             }
             else
             {
                 anim.Play("Walk");
-                Debug.Log("marche" + finger);
+                //Debug.Log("marche" + finger);
             }
         }
         else if (playerAction.GameMap.Move.ReadValue<float>() != 0f && IsGrounded())
