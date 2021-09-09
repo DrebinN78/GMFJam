@@ -45,6 +45,8 @@ public class PlayerMove : MonoBehaviour
 
     [Header("Finger")]
     public int finger;
+    public bool canDropFinger;
+    public GameObject fingerGO;
 
     void Awake()
     {
@@ -56,6 +58,7 @@ public class PlayerMove : MonoBehaviour
         playerAction.GameMap.Move.performed += Move;
         playerAction.GameMap.Jump.performed += Jump;
         playerAction.GameMap.Attack.performed += Attack;
+        playerAction.GameMap.Drop.performed += Drop;
     }
 
     void OnEnable()
@@ -63,7 +66,7 @@ public class PlayerMove : MonoBehaviour
         playerAction.GameMap.Move.Enable();
         playerAction.GameMap.Jump.Enable();
         playerAction.GameMap.Attack.Enable();
-
+        playerAction.GameMap.Drop.Enable();
     }
 
     void OnDisable()
@@ -71,6 +74,7 @@ public class PlayerMove : MonoBehaviour
         playerAction.GameMap.Move.Disable();
         playerAction.GameMap.Jump.Disable();
         playerAction.GameMap.Attack.Disable();
+        playerAction.GameMap.Drop.Disable();
     }
 
     void Update()
@@ -174,6 +178,16 @@ public class PlayerMove : MonoBehaviour
         actualAttackRecov -= Time.deltaTime;
     }
 
+    public void Drop(InputAction.CallbackContext context)
+    {
+        if(canDropFinger && finger > 2)
+        {
+            Debug.Log("drop");
+            Instantiate(fingerGO, transform.position, transform.rotation);
+            finger--;
+        }
+    }
+
 
 
     // Collisions ----------------------------------------------------------------------------------------------------------------------------------
@@ -251,10 +265,12 @@ public class PlayerMove : MonoBehaviour
             if (finger >= 2)
             {
                 anim.Play("Run");
+                Debug.Log("cours" + finger);
             }
             else
             {
                 anim.Play("Walk");
+                Debug.Log("marche" + finger);
             }
         }
         else if (playerAction.GameMap.Move.ReadValue<float>() != 0f && IsGrounded())

@@ -41,6 +41,14 @@ public class @PlayerActionClass : IInputActionCollection, IDisposable
                     ""expectedControlType"": ""Button"",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Drop"",
+                    ""type"": ""Button"",
+                    ""id"": ""76a9b7ba-ff3b-4ec3-a7cf-58aa7a1ef457"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -151,6 +159,28 @@ public class @PlayerActionClass : IInputActionCollection, IDisposable
                     ""processors"": """",
                     ""groups"": ""Gamepad"",
                     ""action"": ""Attack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""6b3beee1-2cdc-4f88-bc46-ebb099adb7be"",
+                    ""path"": ""<Keyboard>/alt"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Keyboard&Mouse"",
+                    ""action"": ""Drop"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9775128c-5189-48f6-b809-5c003aca220e"",
+                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": ""Gamepad"",
+                    ""action"": ""Drop"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -731,6 +761,7 @@ public class @PlayerActionClass : IInputActionCollection, IDisposable
         m_GameMap_Move = m_GameMap.FindAction("Move", throwIfNotFound: true);
         m_GameMap_Jump = m_GameMap.FindAction("Jump", throwIfNotFound: true);
         m_GameMap_Attack = m_GameMap.FindAction("Attack", throwIfNotFound: true);
+        m_GameMap_Drop = m_GameMap.FindAction("Drop", throwIfNotFound: true);
         // UI
         m_UI = asset.FindActionMap("UI", throwIfNotFound: true);
         m_UI_Navigate = m_UI.FindAction("Navigate", throwIfNotFound: true);
@@ -795,6 +826,7 @@ public class @PlayerActionClass : IInputActionCollection, IDisposable
     private readonly InputAction m_GameMap_Move;
     private readonly InputAction m_GameMap_Jump;
     private readonly InputAction m_GameMap_Attack;
+    private readonly InputAction m_GameMap_Drop;
     public struct GameMapActions
     {
         private @PlayerActionClass m_Wrapper;
@@ -802,6 +834,7 @@ public class @PlayerActionClass : IInputActionCollection, IDisposable
         public InputAction @Move => m_Wrapper.m_GameMap_Move;
         public InputAction @Jump => m_Wrapper.m_GameMap_Jump;
         public InputAction @Attack => m_Wrapper.m_GameMap_Attack;
+        public InputAction @Drop => m_Wrapper.m_GameMap_Drop;
         public InputActionMap Get() { return m_Wrapper.m_GameMap; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -820,6 +853,9 @@ public class @PlayerActionClass : IInputActionCollection, IDisposable
                 @Attack.started -= m_Wrapper.m_GameMapActionsCallbackInterface.OnAttack;
                 @Attack.performed -= m_Wrapper.m_GameMapActionsCallbackInterface.OnAttack;
                 @Attack.canceled -= m_Wrapper.m_GameMapActionsCallbackInterface.OnAttack;
+                @Drop.started -= m_Wrapper.m_GameMapActionsCallbackInterface.OnDrop;
+                @Drop.performed -= m_Wrapper.m_GameMapActionsCallbackInterface.OnDrop;
+                @Drop.canceled -= m_Wrapper.m_GameMapActionsCallbackInterface.OnDrop;
             }
             m_Wrapper.m_GameMapActionsCallbackInterface = instance;
             if (instance != null)
@@ -833,6 +869,9 @@ public class @PlayerActionClass : IInputActionCollection, IDisposable
                 @Attack.started += instance.OnAttack;
                 @Attack.performed += instance.OnAttack;
                 @Attack.canceled += instance.OnAttack;
+                @Drop.started += instance.OnDrop;
+                @Drop.performed += instance.OnDrop;
+                @Drop.canceled += instance.OnDrop;
             }
         }
     }
@@ -992,6 +1031,7 @@ public class @PlayerActionClass : IInputActionCollection, IDisposable
         void OnMove(InputAction.CallbackContext context);
         void OnJump(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
+        void OnDrop(InputAction.CallbackContext context);
     }
     public interface IUIActions
     {
