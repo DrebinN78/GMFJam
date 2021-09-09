@@ -24,6 +24,7 @@ public class EnemyPatrol : MonoBehaviour
     public float timeBtwShot;
     float actualTimeBtwShot;
 
+    public bool leftRight;
     // Start is called before the first frame update
     private void Start()
     {
@@ -44,16 +45,23 @@ public class EnemyPatrol : MonoBehaviour
             actualPos = pos2;
         }
 
+        
         //if the actual position is the same with pos1 or pos2, move towards the other pos
         if(actualPos == pos1)
         {
             enemyPos.position = Vector3.MoveTowards(enemyPos.position, pos2.position, enemySpeed * Time.deltaTime);
-            enemyPos.localScale = new Vector3(1, 1, 1);
+            if(leftRight)
+            {
+                enemyPos.localScale = new Vector3(1, 1, 1);
+            }
         }
         else if(actualPos == pos2)
         {
             enemyPos.position = Vector3.MoveTowards(enemyPos.position, pos1.position, enemySpeed * Time.deltaTime);
-            enemyPos.localScale = new Vector3(1, -1, 1);
+            if(leftRight)
+            {
+                enemyPos.localScale = new Vector3(1, -1, 1);
+            }
         }
 
         DeathRay();
