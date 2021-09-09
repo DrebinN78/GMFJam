@@ -10,6 +10,7 @@ public class PlayerMove : MonoBehaviour
     CapsuleCollider2D bc;
     InputAction input;
     PlayerActionClass playerAction;
+    Animator anim;
 
 
 
@@ -49,6 +50,7 @@ public class PlayerMove : MonoBehaviour
     {
         rb = GetComponent<Rigidbody2D>();
         bc = GetComponent<CapsuleCollider2D>();
+        anim = GetComponent<Animator>();
         canMove = true;
         playerAction = new PlayerActionClass();
         playerAction.GameMap.Move.performed += Move;
@@ -74,6 +76,7 @@ public class PlayerMove : MonoBehaviour
     void Update()
     {
         IsGrounded();
+        Anim();
         WallJumpRecov();
         if (playerAction.GameMap.Move.ReadValue<float>() == 0f)
             rb.velocity = new Vector2(0, rb.velocity.y);
@@ -237,4 +240,25 @@ public class PlayerMove : MonoBehaviour
 
         }
     }
+
+
+
+    // Animations ----------------------------------------------------------------------------------------------------
+
+    public void Anim()
+    {
+        if(playerAction.GameMap.Move.ReadValue<float>() != 0f && IsGrounded()){
+            if(finger >= 2)
+            {
+                anim.Play("Run");
+            }
+            else
+            {
+                anim.Play("Walk");
+            }
+        }else if(playerAction.GameMap.Move.ReadValue<float>() != 0f && IsGrounded()){
+            anim.Play("Idle");
+        }
+    }
+
 }
