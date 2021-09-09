@@ -108,7 +108,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -4638316702863074865, guid: 02c038324369a5f48ab638d0967d9621, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 110d1496d282b4d46b923925dc1a4038, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -273,7 +273,7 @@ MonoBehaviour:
   canMove: 0
   speed: 15
   isLeft: 0
-  jumpForce: 18
+  jumpForce: 800
   extraHeightBelow: 0.1
   ground:
     serializedVersion: 2
@@ -289,6 +289,8 @@ MonoBehaviour:
   attack: {fileID: 1508613276527865405, guid: 2f6c8fd4c6c2ba849ad9ad42df08e215, type: 3}
   attackPoint: {fileID: 6014229382054732620}
   finger: 0
+  canDropFinger: 0
+  fingerGO: {fileID: 0}
 --- !u!95 &533264133909373524
 Animator:
   serializedVersion: 3
