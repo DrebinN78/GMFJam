@@ -136,7 +136,7 @@ public class PlayerMove : MonoBehaviour
     {
         if (IsGrounded() && finger >= 2)
         {
-            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            rb.AddForce(Vector2.up * jumpForce);
             anim.Play("Jump");
         }
         else if (IsWalled() && finger >= 4)
@@ -274,8 +274,8 @@ public class PlayerMove : MonoBehaviour
         if (playerAction.GameMap.Move.ReadValue<float>() != 0f && IsGrounded())
         {
 
-                anim.Play("Run");
-                //Debug.Log("cours" + finger);
+            anim.Play("Run");
+            //Debug.Log("cours" + finger);
 
         }
         else if (playerAction.GameMap.Move.ReadValue<float>() == 0f && IsGrounded())
