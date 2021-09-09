@@ -24,7 +24,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5556120103568126507}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
@@ -45,8 +45,38 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sounds:
   - name: First
-    clip: {fileID: 8300000, guid: a8cb8e7eac551da4f88773b1a464d301, type: 3}
+    clip: {fileID: 8300000, guid: 6e7bfa591ca89af49a82eb7f290f9461, type: 3}
     volume: 0.2
     pitch: 1
     loop: 1
+    source: {fileID: 0}
+  - name: Punch
+    clip: {fileID: 8300000, guid: b017fe5512324254a88997bac2bfb2e4, type: 3}
+    volume: 0.4
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: GetDamaged
+    clip: {fileID: 8300000, guid: c125b272cf7366f4eb5838befe0acb00, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Twomp
+    clip: {fileID: 8300000, guid: 74234b849b57b4e46aff51c6984a7c5c, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: Jump
+    clip: {fileID: 8300000, guid: fcd5cde5491e4934793e60f633064040, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
+    source: {fileID: 0}
+  - name: WallJump
+    clip: {fileID: 8300000, guid: 79865f919fa878443a554ddab70922d6, type: 3}
+    volume: 0.2
+    pitch: 1
+    loop: 0
     source: {fileID: 0}
