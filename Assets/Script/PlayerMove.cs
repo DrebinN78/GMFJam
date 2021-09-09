@@ -37,7 +37,7 @@ public class PlayerMove : MonoBehaviour
 
     [Header("Attack")]
     public float attackRecov;
-    float actualAttackRecov;
+    public float actualAttackRecov;
 
     public GameObject attack;
     public Transform attackPoint;
@@ -86,6 +86,8 @@ public class PlayerMove : MonoBehaviour
         {
             rb.velocity = new Vector2(0, rb.velocity.y);
         }
+
+        actualAttackRecov -= Time.deltaTime;
     }
 
     // Movement ------------------------------------------------------------------------------------------------------------------------------------
@@ -123,6 +125,7 @@ public class PlayerMove : MonoBehaviour
                     isLeft = true;
                     transform.eulerAngles = new Vector3(0, 180, 0);
                 }
+
                 /*else
                 {
                     rb.velocity = new Vector2(0, rb.velocity.y);
@@ -136,11 +139,13 @@ public class PlayerMove : MonoBehaviour
     {
         if (IsGrounded() && finger >= 2)
         {
-            rb.AddForce(Vector2.up * jumpForce);
+            rb.velocity = new Vector2(rb.velocity.x, jumpForce);
+            AudioManger.Instance.Play("Jump");
             anim.Play("Jump");
         }
         else if (IsWalled() && finger >= 4)
         {
+            AudioManger.Instance.Play("WallJump");
             if (isLeft)
             {
                 rb.velocity = new Vector2(speed * speedMulti, jumpForce);
@@ -179,8 +184,8 @@ public class PlayerMove : MonoBehaviour
             var att = Instantiate(attack, attackPoint.position, attackPoint.rotation);
             att.transform.parent = gameObject.transform;
             actualAttackRecov = attackRecov;
+            AudioManger.Instance.Play("Punch");
         }
-        actualAttackRecov -= Time.deltaTime;
     }
 
     public void Drop(InputAction.CallbackContext context)
@@ -274,8 +279,8 @@ public class PlayerMove : MonoBehaviour
         if (playerAction.GameMap.Move.ReadValue<float>() != 0f && IsGrounded())
         {
 
-            anim.Play("Run");
-            //Debug.Log("cours" + finger);
+                anim.Play("Run");
+                //Debug.Log("cours" + finger);
 
         }
         else if (playerAction.GameMap.Move.ReadValue<float>() == 0f && IsGrounded())
