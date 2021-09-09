@@ -17,6 +17,7 @@ public class AudioManger : MonoBehaviour
             s.source.pitch = s.pitch;
             s.source.loop = s.loop;
         }
+        Play("First");
     }
 
     public void Play(string name)
