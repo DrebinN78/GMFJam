@@ -83,7 +83,9 @@ public class PlayerMove : MonoBehaviour
         Anim();
         WallJumpRecov();
         if (playerAction.GameMap.Move.ReadValue<float>() == 0f)
+        {
             rb.velocity = new Vector2(0, rb.velocity.y);
+        }
     }
 
     // Movement ------------------------------------------------------------------------------------------------------------------------------------
@@ -271,18 +273,12 @@ public class PlayerMove : MonoBehaviour
     {
         if (playerAction.GameMap.Move.ReadValue<float>() != 0f && IsGrounded())
         {
-            if (finger >= 2)
-            {
+
                 anim.Play("Run");
                 //Debug.Log("cours" + finger);
-            }
-            else
-            {
-                anim.Play("Walk");
-                //Debug.Log("marche" + finger);
-            }
+
         }
-        else if (playerAction.GameMap.Move.ReadValue<float>() != 0f && IsGrounded())
+        else if (playerAction.GameMap.Move.ReadValue<float>() == 0f && IsGrounded())
         {
             anim.Play("Idle");
         }
