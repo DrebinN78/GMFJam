@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class NextLevel : MonoBehaviour
 {
 
     public string levelName;
+    public GameObject fadeIn;
+    public GameObject Canvas;
 
     void Start()
     {
@@ -22,7 +25,18 @@ public class NextLevel : MonoBehaviour
     {
         if(collision.tag == "Player")
         {
-            SceneManager.LoadScene(levelName);
+            collision.gameObject.GetComponent<PlayerMove>().canMove = false;
+            collision.gameObject.GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+            var fade = Instantiate(fadeIn, Canvas.transform.position, Canvas.transform.rotation);
+            fade.transform.parent = Canvas.transform;
+            StartCoroutine("wait1secpls");
         }
+    }
+
+
+    IEnumerator wait1secpls()
+    {
+        yield return new WaitForSeconds(1.2f);
+        SceneManager.LoadScene(levelName);
     }
 }
