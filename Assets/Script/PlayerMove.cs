@@ -194,8 +194,8 @@ public class PlayerMove : MonoBehaviour
 
     public bool IsGrounded()
     {
-        RaycastHit2D raycastHit = Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, Vector2.down, extraHeightBelow, ground);
-
+        Vector3 actualCenter = bc.bounds.center + new Vector3(0, 0.1f, 0);
+        RaycastHit2D raycastHit = Physics2D.BoxCast(actualCenter, bc.bounds.size, 0f, Vector2.down, extraHeightBelow, ground);
         if (raycastHit.collider != null)
         {
             fromWallJump = false;
@@ -204,9 +204,9 @@ public class PlayerMove : MonoBehaviour
             return raycastHit.collider != null;
         }
 
-        /*Debug.DrawRay(bc.bounds.center + new Vector3(bc.bounds.extents.x, 0), Vector2.down * (bc.bounds.extents.y + extraHeightBelow));
-        Debug.DrawRay(bc.bounds.center - new Vector3(bc.bounds.extents.x, 0), Vector2.down * (bc.bounds.extents.y + extraHeightBelow));
-        Debug.DrawRay(bc.bounds.center - new Vector3(bc.bounds.extents.x, bc.bounds.extents.y + extraHeightBelow), Vector2.right * (bc.bounds.extents.x));*/
+        Debug.DrawRay(actualCenter + new Vector3(bc.bounds.extents.x, 0), Vector2.down * (bc.bounds.extents.y + extraHeightBelow));
+        Debug.DrawRay(actualCenter - new Vector3(bc.bounds.extents.x, 0), Vector2.down * (bc.bounds.extents.y + extraHeightBelow));
+        Debug.DrawRay(actualCenter - new Vector3(bc.bounds.extents.x, bc.bounds.extents.y + extraHeightBelow), Vector2.right * (bc.bounds.extents.x));
 
 
         return false;
