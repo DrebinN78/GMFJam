@@ -8,6 +8,8 @@ public class Switch : MonoBehaviour
     public Door door;
     public bool position;
 
+    public List<GameObject> itemNearMe = new List<GameObject>();
+
     void Start()
     {
         
@@ -15,6 +17,15 @@ public class Switch : MonoBehaviour
 
     void Update()
     {
+        if(itemNearMe.Count > 0)
+        {
+            position = true;
+        }
+        else
+        {
+            position = false;
+        }
+
         if(position == true)
         {
             door.isOpen = true;
@@ -27,19 +38,19 @@ public class Switch : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.tag == "Player")
+        if(collision.tag == "Player" || collision.tag == "Finger")
         {
-                position = true;
+            itemNearMe.Add(collision.gameObject);
         }
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.tag == "Player")
+        if (collision.tag == "Player" || collision.tag == "Finger")
         {
             if (mustStay)
             {
-                position = false;
+                itemNearMe.Remove(collision.gameObject);
             }
         }
     }

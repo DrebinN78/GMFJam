@@ -45,7 +45,7 @@ GameObject:
   - component: {fileID: 6589569306741939771}
   - component: {fileID: 6589569306741939772}
   - component: {fileID: 533264133909373524}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Handy
   m_TagString: Player
   m_Icon: {fileID: 0}
