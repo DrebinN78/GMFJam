@@ -142,6 +142,8 @@ MonoBehaviour:
   actualPos: {fileID: 6648729148187640700}
   enemySpeed: 2
   deathRayRange: 6.5
+  bullet: {fileID: 6946767795438494913, guid: 2dfb8938385a95245a42d05c0e7da2d6, type: 3}
+  timeBtwShot: 0.5
 --- !u!212 &6648729149442655603
 SpriteRenderer:
   m_ObjectHideFlags: 0

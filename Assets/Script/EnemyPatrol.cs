@@ -19,6 +19,11 @@ public class EnemyPatrol : MonoBehaviour
 
     public float deathRayRange;
 
+    public GameObject bullet;
+
+    public float timeBtwShot;
+    float actualTimeBtwShot;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -62,13 +67,22 @@ public class EnemyPatrol : MonoBehaviour
             Debug.DrawLine(transform.position, deathRay.point);
             if(deathRay.collider.CompareTag("Player"))
             {
+                if(actualTimeBtwShot <= 0)
+                {
                 Debug.Log("mort");
+                var bul = Instantiate(bullet, transform.position, transform.rotation);
+                bul.GetComponent<Bullet>().dir = -transform.up;
+                    actualTimeBtwShot = timeBtwShot;
+
+                }
             }
         }
         else
         {
             Debug.DrawLine(transform.position, transform.position + -transform.up * deathRayRange);
         }
+
+        actualTimeBtwShot -= Time.deltaTime;
 
     }
 }
