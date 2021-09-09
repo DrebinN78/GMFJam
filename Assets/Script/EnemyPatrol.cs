@@ -53,7 +53,7 @@ public class EnemyPatrol : MonoBehaviour
         else if(actualPos == pos2)
         {
             enemyPos.position = Vector3.MoveTowards(enemyPos.position, pos1.position, enemySpeed * Time.deltaTime);
-            enemyPos.localScale = new Vector3(-1, 1, 1);
+            enemyPos.localScale = new Vector3(1, -1, 1);
         }
 
         DeathRay();

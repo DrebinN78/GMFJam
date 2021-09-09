@@ -98,6 +98,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levelName: Menu
+  fadeIn: {fileID: 3132407408014486163, guid: 2b10ae87fd86c874297aa669e91278a3, type: 3}
+  Canvas: {fileID: 0}
 --- !u!61 &7663381070210263731
 BoxCollider2D:
   m_ObjectHideFlags: 0
