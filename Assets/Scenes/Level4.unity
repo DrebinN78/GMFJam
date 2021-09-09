@@ -179,6 +179,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6589569306741939772, guid: 86da68bd4b4961249b2b5a04114f2150, type: 3}
+      propertyPath: finger
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 6589569306741939772, guid: 86da68bd4b4961249b2b5a04114f2150, type: 3}
       propertyPath: speedMulti
       value: 1.3
       objectReference: {fileID: 0}
@@ -881,7 +885,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 6
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
