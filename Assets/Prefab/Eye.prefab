@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7796775848274244375}
   - component: {fileID: 7796775848274244372}
   - component: {fileID: 7796775848274244373}
+  - component: {fileID: 5673557377492817798}
   m_Layer: 0
   m_Name: mob
   m_TagString: Untagged
@@ -68,6 +69,7 @@ MonoBehaviour:
   deathRayRange: 0
   bullet: {fileID: 0}
   timeBtwShot: 0
+  leftRight: 0
 --- !u!212 &7796775848274244372
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -148,6 +150,22 @@ PolygonCollider2D:
     - - {x: 0.10336733, y: -0.024557292}
       - {x: -1.1012878, y: -4.465953}
       - {x: 2.1548843, y: -4.4711375}
+--- !u!58 &5673557377492817798
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7796775848274244371}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0.045962926, y: 0.07204723}
+  serializedVersion: 2
+  m_Radius: 1.4036635
 --- !u!1 &7796775848799671220
 GameObject:
   m_ObjectHideFlags: 0
