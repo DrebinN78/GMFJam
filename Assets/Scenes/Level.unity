@@ -1358,7 +1358,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368512612}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25.779999, y: -2.8260603, z: -6.445923}
+  m_LocalPosition: {x: -15.529999, y: 2.1739397, z: -6.445923}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1054198635}
@@ -2410,14 +2410,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1559167396}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 3.9177368, y: 0.6955068, z: 2.8129044}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.073112726, y: -4.7044935, z: 3.8892038}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1680361851}
   - {fileID: 1834579193}
-  m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_Father: {fileID: 1792466814}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1663148174
 GameObject:
@@ -3126,6 +3126,11 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!4 &1792466814 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6648729149442655605, guid: 20e45ccf8c1c36b4f9ca7d24281a3101, type: 3}
+  m_PrefabInstance: {fileID: 1734662934}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1824821004
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3315,7 +3320,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1910354119}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 15.153756, y: 9.17394, z: -6.445923}
+  m_LocalPosition: {x: 6.153756, y: 2.4239397, z: -6.445923}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1054198635}
