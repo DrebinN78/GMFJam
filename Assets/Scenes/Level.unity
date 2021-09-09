@@ -2417,7 +2417,7 @@ Transform:
   - {fileID: 1680361851}
   - {fileID: 1834579193}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1663148174
 GameObject:
@@ -3191,7 +3191,7 @@ PrefabInstance:
       objectReference: {fileID: 5766927614644805378, guid: 5fe91d6eb1932ca40a99470f09c277fd, type: 3}
     - target: {fileID: 6589569306741939772, guid: 86da68bd4b4961249b2b5a04114f2150, type: 3}
       propertyPath: canDropFinger
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 86da68bd4b4961249b2b5a04114f2150, type: 3}

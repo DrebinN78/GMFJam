@@ -12,6 +12,7 @@ public class CrusherDetection : MonoBehaviour
     public float downSpeed;
     public float upSpeed;
     public float gravity;
+    public bool once;
 
     public BoxCollider2D bc;
     public float extraHeightBelow;
@@ -42,6 +43,12 @@ public class CrusherDetection : MonoBehaviour
         {
             isFalling = false;
             goUp = true;
+
+            if(once == false)
+            {
+                once = true;
+                AudioManger.Instance.Play("Twomp");
+            }
         }
 
         if(goUp)
@@ -54,6 +61,7 @@ public class CrusherDetection : MonoBehaviour
         {
             isFalling = false;
             goUp = false;
+            once = false;
         }
     }
 

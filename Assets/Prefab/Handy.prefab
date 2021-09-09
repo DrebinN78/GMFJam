@@ -273,7 +273,7 @@ MonoBehaviour:
   canMove: 0
   speed: 15
   isLeft: 0
-  jumpForce: 800
+  jumpForce: 20
   extraHeightBelow: 0.1
   ground:
     serializedVersion: 2
@@ -286,6 +286,7 @@ MonoBehaviour:
   timeRecov: 1
   speedMulti: 1.5
   attackRecov: 0.5
+  actualAttackRecov: 0
   attack: {fileID: 1508613276527865405, guid: 2f6c8fd4c6c2ba849ad9ad42df08e215, type: 3}
   attackPoint: {fileID: 6014229382054732620}
   finger: 0
