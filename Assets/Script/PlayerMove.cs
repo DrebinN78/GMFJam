@@ -89,11 +89,11 @@ public class PlayerMove : MonoBehaviour
         if (canMove)
             if (fromWallJump)
             {
-                rb.AddForce(new Vector2((speed * context.ReadValue<float>()) * speedMulti, 0f));
+                rb.velocity = new Vector2((speed * speedMulti) * context.ReadValue<float>(), 0f);
                 if (context.ReadValue<float>() > 0f)
                 {
                     isLeft = false;
-                    transform.eulerAngles = new Vector3(0, 0, 0);
+                    transform.eulerAngles = Vector3.zero;
 
                 }
                 else if (context.ReadValue<float>() < 0f)
@@ -105,23 +105,22 @@ public class PlayerMove : MonoBehaviour
             }
             else
             {
-                rb.AddForce(new Vector2((speed * context.ReadValue<float>()) * speedMulti, 0f));
+                rb.velocity = new Vector2(speed * context.ReadValue<float>(), 0f);
                 if (context.ReadValue<float>() > 0f)
                 {
                     isLeft = false;
-                    transform.eulerAngles = new Vector3(0, 0, 0);
+                    transform.eulerAngles = Vector3.zero;
 
                 }
                 else if (context.ReadValue<float>() < 0f)
                 {
                     isLeft = true;
-
                     transform.eulerAngles = new Vector3(0, 180, 0);
                 }
-                else
+                /*else
                 {
                     rb.velocity = new Vector2(0, rb.velocity.y);
-                }
+                }*/
             }
     }
 
@@ -166,7 +165,7 @@ public class PlayerMove : MonoBehaviour
 
     public void Attack(InputAction.CallbackContext context)
     {
-        if (actualAttackRecov <= 0 && finger >=3)
+        if (actualAttackRecov <= 0 && finger >= 3)
         {
             var att = Instantiate(attack, attackPoint.position, attackPoint.rotation);
             att.transform.parent = gameObject.transform;
@@ -247,8 +246,9 @@ public class PlayerMove : MonoBehaviour
 
     public void Anim()
     {
-        if(playerAction.GameMap.Move.ReadValue<float>() != 0f && IsGrounded()){
-            if(finger >= 2)
+        if (playerAction.GameMap.Move.ReadValue<float>() != 0f && IsGrounded())
+        {
+            if (finger >= 2)
             {
                 anim.Play("Run");
             }
@@ -256,7 +256,9 @@ public class PlayerMove : MonoBehaviour
             {
                 anim.Play("Walk");
             }
-        }else if(playerAction.GameMap.Move.ReadValue<float>() != 0f && IsGrounded()){
+        }
+        else if (playerAction.GameMap.Move.ReadValue<float>() != 0f && IsGrounded())
+        {
             anim.Play("Idle");
         }
     }
