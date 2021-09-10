@@ -212,6 +212,8 @@ public class PlayerMove : MonoBehaviour
             fromWallJump = false;
             canMove = true;
 
+            Debug.Log("grounded");
+
             if (anim.GetCurrentAnimatorStateInfo(0).IsName("Jump2"))
             {
                 anim.Play("Jump3");
