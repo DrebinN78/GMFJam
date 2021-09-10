@@ -97,7 +97,7 @@ public class PlayerMove : MonoBehaviour
         if (canMove)
             if (fromWallJump)
             {
-                rb.velocity = new Vector2((speed * speedMulti) * context.ReadValue<float>(), 0f);
+                rb.velocity = new Vector2((speed * speedMulti) * context.ReadValue<float>(), rb.velocity.y);
                 if (context.ReadValue<float>() > 0f)
                 {
                     isLeft = false;
@@ -113,7 +113,7 @@ public class PlayerMove : MonoBehaviour
             }
             else
             {
-                rb.velocity = new Vector2(speed * context.ReadValue<float>(), 0f);
+                rb.velocity = new Vector2(speed * context.ReadValue<float>(), rb.velocity.y);
                 if (context.ReadValue<float>() > 0f)
                 {
                     isLeft = false;
@@ -190,7 +190,7 @@ public class PlayerMove : MonoBehaviour
 
     public void Drop(InputAction.CallbackContext context)
     {
-        if(canDropFinger && finger > 2)
+        if (canDropFinger && finger > 2)
         {
             Debug.Log("drop");
             Instantiate(fingerGO, transform.position, transform.rotation);
@@ -219,12 +219,12 @@ public class PlayerMove : MonoBehaviour
 
             return raycastHit.collider != null;
         }
+        /*
+                Debug.DrawRay(actualCenter + new Vector3(bc.bounds.extents.x, 0), Vector2.down * (bc.bounds.extents.y + extraHeightBelow));
+                Debug.DrawRay(actualCenter - new Vector3(bc.bounds.extents.x, 0), Vector2.down * (bc.bounds.extents.y + extraHeightBelow));
+                Debug.DrawRay(actualCenter - new Vector3(bc.bounds.extents.x, bc.bounds.extents.y + extraHeightBelow), Vector2.right * (bc.bounds.extents.x));
 
-        Debug.DrawRay(actualCenter + new Vector3(bc.bounds.extents.x, 0), Vector2.down * (bc.bounds.extents.y + extraHeightBelow));
-        Debug.DrawRay(actualCenter - new Vector3(bc.bounds.extents.x, 0), Vector2.down * (bc.bounds.extents.y + extraHeightBelow));
-        Debug.DrawRay(actualCenter - new Vector3(bc.bounds.extents.x, bc.bounds.extents.y + extraHeightBelow), Vector2.right * (bc.bounds.extents.x));
-
-
+        */
         return false;
 
     }
@@ -234,38 +234,42 @@ public class PlayerMove : MonoBehaviour
     {
         if (isLeft)
         {
-            RaycastHit2D raycastHit = Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, -Vector2.right, extraHeightFace, wall);
+            Vector3 actualCenter = bc.bounds.center + new Vector3(0.1f, 0, 0);
+            RaycastHit2D raycastHit = Physics2D.BoxCast(actualCenter, bc.bounds.size, 0f, -Vector2.right, extraHeightFace, wall);
 
             if (raycastHit.collider != null)
             {
                 return raycastHit.collider != null;
             }
-
-
+            /*
+            Debug.DrawRay(bc.bounds.center + new Vector3(0, bc.bounds.extents.y), -Vector2.right * (bc.bounds.extents.x + extraHeightFace));
+            Debug.DrawRay(bc.bounds.center - new Vector3(0, bc.bounds.extents.y), -Vector2.right * (bc.bounds.extents.x + extraHeightFace));
+            Debug.DrawRay(bc.bounds.center + new Vector3(-bc.bounds.extents.x - extraHeightFace, bc.bounds.extents.y), Vector2.down * (bc.bounds.extents.y));
+            Debug.Log(raycastHit.collider);
+*/
             return false;
 
-            /*Debug.DrawRay(pS.boxCollider2D.bounds.center + new Vector3(0, pS.boxCollider2D.bounds.extents.y), -Vector2.right * (pS.boxCollider2D.bounds.extents.x + extraHeightFace));
-            Debug.DrawRay(pS.boxCollider2D.bounds.center - new Vector3(0, pS.boxCollider2D.bounds.extents.y), -Vector2.right * (pS.boxCollider2D.bounds.extents.x + extraHeightFace));
-            Debug.DrawRay(pS.boxCollider2D.bounds.center + new Vector3(-pS.boxCollider2D.bounds.extents.x - extraHeightFace, pS.boxCollider2D.bounds.extents.y), Vector2.down * (pS.boxCollider2D.bounds.extents.y));
-            Debug.Log(raycastHit.collider);*/
+
 
         }
         else
         {
+            Vector3 actualCenter = bc.bounds.center + new Vector3(-0.1f, 0, 0);
             RaycastHit2D raycastHit = Physics2D.BoxCast(bc.bounds.center, bc.bounds.size, 0f, Vector2.right, extraHeightFace, wall);
 
             if (raycastHit.collider != null)
             {
                 return raycastHit.collider != null;
             }
-
-
+            /*
+            Debug.DrawRay(bc.bounds.center + new Vector3(0, bc.bounds.extents.y), Vector2.right * (bc.bounds.extents.x + extraHeightFace));
+            Debug.DrawRay(bc.bounds.center - new Vector3(0, bc.bounds.extents.y), Vector2.right * (bc.bounds.extents.x + extraHeightFace));
+            Debug.DrawRay(bc.bounds.center + new Vector3(bc.bounds.extents.x + extraHeightFace, bc.bounds.extents.y), Vector2.down * (bc.bounds.extents.y));
+            Debug.Log(raycastHit.collider);
+*/
             return false;
 
-            /*Debug.DrawRay(pS.boxCollider2D.bounds.center + new Vector3(0, pS.boxCollider2D.bounds.extents.y), Vector2.right * (pS.boxCollider2D.bounds.extents.x + extraHeightFace));
-            Debug.DrawRay(pS.boxCollider2D.bounds.center - new Vector3(0, pS.boxCollider2D.bounds.extents.y), Vector2.right * (pS.boxCollider2D.bounds.extents.x + extraHeightFace));
-            Debug.DrawRay(pS.boxCollider2D.bounds.center + new Vector3(pS.boxCollider2D.bounds.extents.x + extraHeightFace, pS.boxCollider2D.bounds.extents.y), Vector2.down * (pS.boxCollider2D.bounds.extents.y));
-            Debug.Log(raycastHit.collider);*/
+
 
         }
     }
@@ -279,8 +283,8 @@ public class PlayerMove : MonoBehaviour
         if (playerAction.GameMap.Move.ReadValue<float>() != 0f && IsGrounded())
         {
 
-                anim.Play("Run");
-                //Debug.Log("cours" + finger);
+            anim.Play("Run");
+            //Debug.Log("cours" + finger);
 
         }
         else if (playerAction.GameMap.Move.ReadValue<float>() == 0f && IsGrounded())
