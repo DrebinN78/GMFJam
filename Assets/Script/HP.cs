@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HP : MonoBehaviour
 {
@@ -8,12 +9,16 @@ public class HP : MonoBehaviour
     public float currentHealth;
 
     public float stunTime;
-    public float stunTimeCounter;
+    float stunTimeCounter;
 
     public bool isInvulnerable;
 
     public bool isPlayer;
     SpriteRenderer sr;
+
+    public GameObject fadeIn;
+    public GameObject Canvas;
+    public GameObject leTrucADestroy;
 
 
     void Start()
@@ -34,6 +39,20 @@ public class HP : MonoBehaviour
         {
             sr.color = Color.white;
             isInvulnerable = false;
+        }
+
+        if(currentHealth <= 0)
+        {
+            if (isPlayer)
+            {
+                GetComponent<PlayerMove>().canMove = false;
+                GetComponent<Rigidbody2D>().velocity = Vector2.zero;
+                var fade = Instantiate(fadeIn, Canvas.transform.position, Canvas.transform.rotation);
+                fade.transform.parent = Canvas.transform;
+                StartCoroutine("wait1secpls");
+            }
+            else
+            Destroy(leTrucADestroy);
         }
     }
 
@@ -56,7 +75,16 @@ public class HP : MonoBehaviour
                 currentHealth -= 1;
 
                 stunTimeCounter = stunTime;
+
+                
             }
         }
+    }
+
+    IEnumerator wait1secpls()
+    {
+        yield return new WaitForSeconds(1.2f);
+
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }

@@ -104,9 +104,10 @@ GameObject:
   - component: {fileID: 6648729149442655605}
   - component: {fileID: 6648729149442655600}
   - component: {fileID: 6648729149442655603}
+  - component: {fileID: 2082582487858985776}
   m_Layer: 0
   m_Name: mob
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -144,6 +145,7 @@ MonoBehaviour:
   deathRayRange: 6.5
   bullet: {fileID: 6946767795438494913, guid: 2dfb8938385a95245a42d05c0e7da2d6, type: 3}
   timeBtwShot: 0.5
+  leftRight: 0
 --- !u!212 &6648729149442655603
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -196,3 +198,29 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!61 &2082582487858985776
+BoxCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6648729149442655604}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  m_SpriteTilingProperty:
+    border: {x: 0, y: 0, z: 0, w: 0}
+    pivot: {x: 0.5, y: 0.5}
+    oldSize: {x: 3.4133334, y: 3.4133334}
+    newSize: {x: 3.7, y: 1.96}
+    adaptiveTilingThreshold: 0.5
+    drawMode: 0
+    adaptiveTiling: 0
+  m_AutoTiling: 0
+  serializedVersion: 2
+  m_Size: {x: 3.4133334, y: 3.4133334}
+  m_EdgeRadius: 0

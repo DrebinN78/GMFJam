@@ -130,6 +130,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4318423467434304800, guid: 86da68bd4b4961249b2b5a04114f2150, type: 3}
+      propertyPath: Canvas
+      value: 
+      objectReference: {fileID: 2144679994}
     - target: {fileID: 6589569306741939768, guid: 86da68bd4b4961249b2b5a04114f2150, type: 3}
       propertyPath: m_Name
       value: Handy

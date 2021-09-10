@@ -45,6 +45,7 @@ GameObject:
   - component: {fileID: 6589569306741939771}
   - component: {fileID: 6589569306741939772}
   - component: {fileID: 533264133909373524}
+  - component: {fileID: 4318423467434304800}
   m_Layer: 8
   m_Name: Handy
   m_TagString: Player
@@ -311,3 +312,22 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &4318423467434304800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6589569306741939768}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00d355ecc9769ef4698a0d99dc684f32, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 3
+  stunTime: 1
+  isInvulnerable: 0
+  isPlayer: 1
+  fadeIn: {fileID: 3132407408014486163, guid: 2b10ae87fd86c874297aa669e91278a3, type: 3}
+  Canvas: {fileID: 0}
+  leTrucADestroy: {fileID: 0}
