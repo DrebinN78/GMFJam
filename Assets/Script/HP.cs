@@ -76,6 +76,8 @@ public class HP : MonoBehaviour
 
                 stunTimeCounter = stunTime;
 
+                AudioManger.Instance.Play("GetDamaged");
+
                 
             }
         }
