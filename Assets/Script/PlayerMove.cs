@@ -221,6 +221,10 @@ public class PlayerMove : MonoBehaviour
 
             return raycastHit.collider != null;
         }
+        else{
+
+            Debug.Log("pasgrounded");
+        }
         /*
                 Debug.DrawRay(actualCenter + new Vector3(bc.bounds.extents.x, 0), Vector2.down * (bc.bounds.extents.y + extraHeightBelow));
                 Debug.DrawRay(actualCenter - new Vector3(bc.bounds.extents.x, 0), Vector2.down * (bc.bounds.extents.y + extraHeightBelow));

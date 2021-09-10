@@ -283,8 +283,8 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   fromWallJump: 0
-  extraHeightFace: 0.1
-  timeRecov: 1
+  extraHeightFace: 0.2
+  timeRecov: 0.2
   speedMulti: 1.5
   attackRecov: 0.5
   actualAttackRecov: 0
