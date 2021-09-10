@@ -10,6 +10,8 @@ public class NextLevelFinal : MonoBehaviour
     public GameObject fadeIn;
     public GameObject Canvas;
 
+    public GameObject hint;
+
     void Start()
     {
 
@@ -30,6 +32,11 @@ public class NextLevelFinal : MonoBehaviour
             fade.transform.parent = Canvas.transform;
             StartCoroutine("wait1secpls");
         }
+        else
+        {
+            StopCoroutine("showHint");
+            StartCoroutine("showHint");
+        }
     }
 
 
@@ -37,5 +44,12 @@ public class NextLevelFinal : MonoBehaviour
     {
         yield return new WaitForSeconds(1.2f);
         SceneManager.LoadScene(levelName);
+    }
+
+    IEnumerator showHint()
+    {
+        hint.SetActive(true);
+        yield return new WaitForSeconds(2f);
+        hint.SetActive(false);
     }
 }
